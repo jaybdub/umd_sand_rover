@@ -40,6 +40,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->saveSentDataButton,SIGNAL(clicked()),SLOT(saveSentData()));
     connect(ui->clearSentDataButton,SIGNAL(clicked()),SLOT(clearSentData()));
+
+    ui->markerTracePlot->addGraph();
+    ui->markerTracePlot->graph(0)->addData(1.5,1.5);
+
+    ui->markerTracePlot->graph(0)->addData(1.9,1.9);
+    ui->markerTracePlot->graph(0)->addData(1.5,1.9);
+    ui->markerTracePlot->graph(0)->setScatterStyle(QCPScatterStyle::ssCross);
+    ui->markerTracePlot->replot();
 }
 
 MainWindow::~MainWindow()
@@ -47,6 +55,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::updatePlotCoordinateFrame()
+{
+
+    ui->markerTracePlot->xAxis->setRange(0,_d_ox);
+    ui->markerTracePlot->yAxis->setRange(0,_d_oy);
+}
 
 void MainWindow::selectView(QString name)
 {
@@ -122,6 +136,8 @@ void MainWindow::applySettings()
     //Load the calibration file from path specified
     _camera_parameters.readFromXMLFile(ui->calibrationFileLineEdit->text().toStdString());
     _camera_parameters.resize(cv::Size(_camera_width,_camera_height));
+
+    updatePlotCoordinateFrame();
 
     QTextStream(stdout) << "Settings applied." << endl;
 }
@@ -282,7 +298,10 @@ void MainWindow::update()
                     line.append('\n');
                     sendData(line.toUtf8());
                 }
-
+                //Add marker point to trajectory
+                _marker_trajectories.addMarker(kmarker);
+                KeytrackMarkerTrajectory trajectory = _marker_trajectories.getTrajectory(kmarker.id);
+                //ui->sentDataTextEdit->setText(QString::number(trajectory.size()));
             }
             //QTextStream(stdout) << "Marker " << QString::number(i) << endl;
             //Draw markers on image

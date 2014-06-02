@@ -2,23 +2,19 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-//#include "kutils.h"
 #include <opencv2/opencv.hpp>
 #include <QTimer>
 #include <aruco/aruco.h>
+#include "qcustomplot.h"
 #include <QTextStream>
-
+#include "keytrackmarkertrajectory.h"
+#include "keytrackmarkertrajectorylist.h"
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include <QByteArray>
 #include <QFileDialog>
 
-struct KeytrackMarker {
-    int id;
-    float x;
-    float y;
-    float theta;
-};
+
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +26,7 @@ class MainWindow : public QMainWindow
 
 public:
     void showImage(cv::Mat* image);
+    void updatePlotCoordinateFrame();
     QImage cvMatToQImage( const cv::Mat &inMat );
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -65,6 +62,8 @@ private:
     float _origin_px[2];
     float _x_axis_px[2];
     float _y_axis_px[2];
+    //QCustomPlot* marker_trace;
+    KeytrackMarkerTrajectoryList _marker_trajectories;
     QSerialPort* _serial_port;
     QByteArray _received_data;
     QByteArray _sent_data;
