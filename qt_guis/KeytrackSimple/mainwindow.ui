@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>700</height>
+    <width>1117</width>
+    <height>774</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -556,6 +556,97 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>Run</string>
+        </property>
+        <widget class="QPushButton" name="startRunButton">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>40</y>
+           <width>94</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Start</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="stopRunButton">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>94</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>End</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_4">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>100</y>
+           <width>81</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Run Time: </string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="runTimeLabel">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>100</y>
+           <width>101</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;run time&gt;</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_5">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>140</y>
+           <width>121</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Frames Detected:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="framesDetectedLabel">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>180</y>
+           <width>68</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;frames&gt;</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -565,8 +656,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
-     <height>20</height>
+     <width>1117</width>
+     <height>29</height>
     </rect>
    </property>
   </widget>

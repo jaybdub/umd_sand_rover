@@ -298,7 +298,7 @@ void MainWindow::update()
                 _y_axis[2] = _markers[i].Tvec.ptr<float>(0)[2];
                 _y_axis_px[0] = _markers[i][0].x;
                 _y_axis_px[1] = _markers[i][0].y;
-            }
+            }2.0
             else {
                 //Convert marker to keytrack marker by calculating X, Y, and Theta
                 KeytrackMarker kmarker = arucoMarkerToKeytrackMarker(_markers[i]);

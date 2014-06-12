@@ -47,3 +47,8 @@ FORMS    += mainwindow.ui
 
 #INCLUDEPATH += $$PWD/../../../../../opt/ros/hydro/include
 #DEPENDPATH += $$PWD/../../../../../opt/ros/hydro/include
+
+unix|win32: LIBS += -L/usr/local/lib -laruco -lopencv_highgui -lopencv_core
+
+INCLUDEPATH += /usr/local/include
+DEPENDPATH += /usr/local/include

@@ -13,7 +13,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 #include <QByteArray>
 #include <QFileDialog>
-
+#include <QDateTime>
 
 
 namespace Ui {
@@ -47,6 +47,8 @@ public slots:
     void saveSentData();
     void clearReceivedData();
     void saveReceivedData();
+    void startRun();
+    void stopRun();
 private:
     KeytrackMarker arucoMarkerToKeytrackMarker(aruco::Marker marker);
     int _camera_device;
@@ -62,6 +64,9 @@ private:
     float _origin_px[2];
     float _x_axis_px[2];
     float _y_axis_px[2];
+    QTime _run_time;
+    bool _running;
+    int _frame_count;
     //QCustomPlot* marker_trace;
     KeytrackMarkerTrajectoryList _marker_trajectories;
     QSerialPort* _serial_port;
