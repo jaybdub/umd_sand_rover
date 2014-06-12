@@ -26,6 +26,10 @@ Installing dependencies for GUI
     ```
   5.  Follow the instructions in the installation gui to install Qt (including Qt Creator)
 2. Install CMake
+    ```
+    sudo pacman -S cmake
+    ```
+
 3. Install OpenCV2.4.9
   1. Download Opencv2.4.9 for Linux/Mac from [here](http://opencv.org/downloads.html)
   2. Extract the files to your home directory ~/
