@@ -69,3 +69,8 @@ Installing dependencies for GUI
     ```
     /usr/local/lib
     ```
+  3.  Run ldconfig in the terminal
+
+    ```
+    sudo ldconfig
+    ```
