@@ -228,7 +228,7 @@ void MainWindow::receiveData()
 
 void MainWindow::sendData(QByteArray data)
 {
-    //_serial_port->write(data);
+    _serial_port->write(data);
     //_sent_data.append(data);
     ui->sentDataTextEdit->setText(data);
 
