@@ -67,6 +67,8 @@ private:
     QTime _run_time;
     bool _running;
     int _frame_count;
+    int _frame_interval_ms;
+    QTimer *_timer;
     //QCustomPlot* marker_trace;
     KeytrackMarkerTrajectoryList _marker_trajectories;
     QSerialPort* _serial_port;

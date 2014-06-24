@@ -25,9 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
     //applySettings();
 
     //Timer connects to the kcamera object to call grabFrame every 30 milliseconds
-    QTimer *timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),SLOT(update()));
-    timer->start(20);
+    _timer = new QTimer(this);
+    connect(_timer,SIGNAL(timeout()),SLOT(update()));
+    _timer->start(20);
 
     connect(ui->applySettingsButton,SIGNAL(clicked()),SLOT(applySettings()));
 
@@ -93,6 +93,8 @@ void MainWindow::loadDefaultSettings()
     ui->cameraDeviceSpinBox->setValue(0);
     //Resolution (640x480)
     ui->cameraResolutionComboBox->setCurrentText("640x480");
+    //Frame interval (30ms)
+    ui->frameIntLineEdit->setText("30");
     //Using calibration (false)
     ui->useCalibrationCheckBox->setChecked(false);
     //Marker size (0.1m)
@@ -121,6 +123,7 @@ void MainWindow::applySettings()
     _camera_device = ui->cameraDeviceSpinBox->value();
     _video_capture.release();
     _video_capture.open(_camera_device);
+    //_timer->stop;
 
     //Set the new resolution
     if(ui->cameraResolutionComboBox->currentText() == "640x480") {
@@ -136,7 +139,8 @@ void MainWindow::applySettings()
         _video_capture.set(CV_CAP_PROP_FRAME_WIDTH, _camera_width);
         _video_capture.set(CV_CAP_PROP_FRAME_HEIGHT, _camera_height);
     }
-
+    _frame_interval_ms = ui->frameIntLineEdit->text().toInt();
+    _timer->start(_frame_interval_ms);
     //Set using calibration
     _using_calibration = ui->useCalibrationCheckBox->isChecked();
 
