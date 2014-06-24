@@ -1,7 +1,8 @@
 #include <SoftwareSerial.h>
 #include "marker_utils.h"
 
-int timeout = 100;
+int timeout = 150;
+Marker marker;
 
 void setup() 
 {
@@ -11,11 +12,14 @@ void setup()
 
 void loop() 
 {
-  Marker marker;
   if(getNextMarker(marker,timeout))
   {
-    Serial.println(marker.id);
+    if(marker.id == 4) {
+      Serial.print(marker.x);
+      Serial.print(",");
+      Serial.println(marker.y);
+    }
   }
   else
-    Serial.println("timed out");
+    Serial.println("timeout");
 }

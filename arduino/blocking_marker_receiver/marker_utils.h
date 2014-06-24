@@ -3,6 +3,9 @@
 
 SoftwareSerial sSerial(10,11);
 
+
+char buf[50];
+  
 typedef struct {
   int id;
   float x;
@@ -117,6 +120,7 @@ void parseMarkerString(Marker& m, char* marker_string)
   }
   temp_buffer[j] = 0;
   m.time = atol(temp_buffer);
+  
 }
 
 //getNextMarker attempts to read a marker from serial
@@ -125,7 +129,6 @@ void parseMarkerString(Marker& m, char* marker_string)
 //Otherwise, if the marker is not fully received by the timeout,
 //a value of 0 is returned.
 int getNextMarker(Marker& m, int timeout) {
-  char buf[50];
   if(getNextMarkerString(buf,timeout))
   {
     parseMarkerString(m,buf);
