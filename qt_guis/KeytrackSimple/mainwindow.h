@@ -37,6 +37,7 @@ public slots:
     void receiveData();
     void sendData(QByteArray data);
     void update();
+    void updateVideo();
     void loadDefaultSettings();
     void refreshSerialPortOptions();
     void updateSerialPort();
@@ -73,7 +74,9 @@ private:
     KeytrackMarkerTrajectoryList _marker_trajectories;
     QSerialPort* _serial_port;
     QByteArray _received_data;
+    int _received_data_max_length;
     QByteArray _sent_data;
+    int _sent_data_max_length;
     aruco::MarkerDetector _marker_detector;
     vector<aruco::Marker> _markers;
     cv::VideoCapture _video_capture;

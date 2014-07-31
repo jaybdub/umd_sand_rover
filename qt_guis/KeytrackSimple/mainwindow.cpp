@@ -29,6 +29,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(_timer,SIGNAL(timeout()),SLOT(update()));
     _timer->start(20);
 
+    //Update video every 20ms
+    QTimer* video_timer = new QTimer(this);
+    connect(video_timer,SIGNAL(timeout()),SLOT(updateVideo()));
+    video_timer->start(20);
+
     connect(ui->applySettingsButton,SIGNAL(clicked()),SLOT(applySettings()));
 
     QFileDialog* file_dialog = new QFileDialog();
@@ -53,11 +58,23 @@ MainWindow::MainWindow(QWidget *parent) :
     _frame_count = 0;
     connect(ui->startRunButton,SIGNAL(clicked()),this,SLOT(startRun()));
     connect(ui->stopRunButton,SIGNAL(clicked()),this,SLOT(stopRun()));
+
+    _received_data_max_length = 1000;
+    _sent_data_max_length = 1000;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::updateVideo(){
+    //Grab frame from camera
+    if(_video_capture.isOpened()) {
+        //_video_capture.
+        //_video_capture >> _image;
+        _video_capture.read(_image);
+    }
 }
 void MainWindow::stopRun() {
     _running = false;
@@ -220,9 +237,16 @@ void MainWindow::showImage(cv::Mat* image)
 }
 void MainWindow::receiveData()
 {
-    //_received_data.append(_serial_port->readAll());
+    QByteArray data;
+    data = _serial_port->readAll();
+    _received_data.append(data);
+
+    //Clip the received data (shown on GUI) to remain within max length
+    if((_received_data.size() - _received_data_max_length) > 0)
+        _received_data.remove(0,_received_data.size() - _received_data_max_length);
+
     //appendPlainText(QString(_serial_port->readAll()));
-    //ui->receivedDataTextEdit->setText(QString(_received_data));
+    ui->receivedDataTextEdit->setText(QString(_received_data));
 
     //Scroll to bottom
     QTextCursor c = ui->receivedDataTextEdit->textCursor();
@@ -233,8 +257,12 @@ void MainWindow::receiveData()
 void MainWindow::sendData(QByteArray data)
 {
     _serial_port->write(data);
-    //_sent_data.append(data);
-    ui->sentDataTextEdit->setText(data);
+    _sent_data.append(data);
+    //Clip the sent data (shown on GUI) to remain within max length
+    if((_sent_data.size() - _sent_data_max_length) > 0)
+        _sent_data.remove(0,_sent_data.size() - _sent_data_max_length);
+
+    ui->sentDataTextEdit->setText(_sent_data);
 
     //Scroll to bottom of sent data box
     QTextCursor c = ui->sentDataTextEdit->textCursor();
@@ -265,7 +293,9 @@ void MainWindow::update()
     }
     //Grab frame from camera
     if(_video_capture.isOpened()) {
-        _video_capture >> _image;
+        //_video_capture.
+        //_video_capture >> _image;
+        //_video_capture.read(_image);
         long frame_time = _run_time.elapsed();
         _frame_count++;
         //Detect markers
