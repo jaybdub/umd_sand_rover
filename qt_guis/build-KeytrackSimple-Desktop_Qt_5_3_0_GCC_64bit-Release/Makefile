@@ -2936,7 +2936,29 @@ mainwindow.o: ../KeytrackSimple/mainwindow.cpp ../KeytrackSimple/mainwindow.h \
 		../../../Qt/5.3/gcc_64/include/QtSerialPort/qserialportinfo.h \
 		../../../Qt/5.3/gcc_64/include/QtCore/QByteArray \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/QFileDialog \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QAction \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QCheckBox \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QComboBox \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QFormLayout \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QFrame \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QMenuBar \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QSpinBox \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QStatusBar \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QTabWidget \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QTextEdit \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QToolBar \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../KeytrackSimple/mainwindow.cpp
 
 qcustomplot.o: ../KeytrackSimple/qcustomplot.cpp ../KeytrackSimple/qcustomplot.h \

@@ -648,7 +648,7 @@ public:
         tabWidget_3->setCurrentIndex(0);
         stackedWidget->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
-        tabWidget_2->setCurrentIndex(0);
+        tabWidget_2->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

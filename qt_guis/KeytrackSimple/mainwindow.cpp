@@ -169,8 +169,13 @@ void MainWindow::applySettings()
     _d_oy = ui->doyLineEdit->text().toFloat();
 
     //Load the calibration file from path specified
-    _camera_parameters.readFromXMLFile(ui->calibrationFileLineEdit->text().toStdString());
-    _camera_parameters.resize(cv::Size(_camera_width,_camera_height));
+    try {
+        _camera_parameters.readFromXMLFile(ui->calibrationFileLineEdit->text().toStdString());
+        _camera_parameters.resize(cv::Size(_camera_width,_camera_height));
+    }
+    catch(cv::Exception e){
+
+    }
 
     updatePlotCoordinateFrame();
 
