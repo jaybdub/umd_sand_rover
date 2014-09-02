@@ -25,6 +25,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
@@ -126,7 +127,18 @@ public:
     QVBoxLayout *verticalLayout_9;
     QTextEdit *receivedDataTextEdit;
     QWidget *tab_2;
-    QFrame *line_4;
+    QVBoxLayout *verticalLayout_14;
+    QGroupBox *groupBox_6;
+    QVBoxLayout *verticalLayout_15;
+    QFormLayout *formLayout_5;
+    QLabel *label_7;
+    QSlider *brightnessSlider;
+    QLabel *label_12;
+    QSlider *sharpnessSlider;
+    QLabel *label_13;
+    QCheckBox *autofocusCheckbox;
+    QLabel *label_14;
+    QSlider *focusSlider;
     QGroupBox *groupBox_3;
     QPushButton *startRunButton;
     QPushButton *stopRunButton;
@@ -134,6 +146,8 @@ public:
     QLabel *runTimeLabel;
     QLabel *label_5;
     QLabel *framesDetectedLabel;
+    QLabel *tempLabel;
+    QFrame *line_4;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -597,12 +611,76 @@ public:
 
         horizontalLayout_3->addLayout(viewport);
 
-        line_4 = new QFrame(centralWidget);
-        line_4->setObjectName(QStringLiteral("line_4"));
-        line_4->setFrameShape(QFrame::VLine);
-        line_4->setFrameShadow(QFrame::Sunken);
+        verticalLayout_14 = new QVBoxLayout();
+        verticalLayout_14->setSpacing(6);
+        verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
+        groupBox_6 = new QGroupBox(centralWidget);
+        groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
+        verticalLayout_15 = new QVBoxLayout(groupBox_6);
+        verticalLayout_15->setSpacing(6);
+        verticalLayout_15->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_15->setObjectName(QStringLiteral("verticalLayout_15"));
+        formLayout_5 = new QFormLayout();
+        formLayout_5->setSpacing(6);
+        formLayout_5->setObjectName(QStringLiteral("formLayout_5"));
+        formLayout_5->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
+        label_7 = new QLabel(groupBox_6);
+        label_7->setObjectName(QStringLiteral("label_7"));
 
-        horizontalLayout_3->addWidget(line_4);
+        formLayout_5->setWidget(0, QFormLayout::LabelRole, label_7);
+
+        brightnessSlider = new QSlider(groupBox_6);
+        brightnessSlider->setObjectName(QStringLiteral("brightnessSlider"));
+        sizePolicy2.setHeightForWidth(brightnessSlider->sizePolicy().hasHeightForWidth());
+        brightnessSlider->setSizePolicy(sizePolicy2);
+        brightnessSlider->setMaximum(255);
+        brightnessSlider->setOrientation(Qt::Horizontal);
+
+        formLayout_5->setWidget(0, QFormLayout::FieldRole, brightnessSlider);
+
+        label_12 = new QLabel(groupBox_6);
+        label_12->setObjectName(QStringLiteral("label_12"));
+
+        formLayout_5->setWidget(1, QFormLayout::LabelRole, label_12);
+
+        sharpnessSlider = new QSlider(groupBox_6);
+        sharpnessSlider->setObjectName(QStringLiteral("sharpnessSlider"));
+        sizePolicy2.setHeightForWidth(sharpnessSlider->sizePolicy().hasHeightForWidth());
+        sharpnessSlider->setSizePolicy(sizePolicy2);
+        sharpnessSlider->setMaximum(255);
+        sharpnessSlider->setOrientation(Qt::Horizontal);
+
+        formLayout_5->setWidget(1, QFormLayout::FieldRole, sharpnessSlider);
+
+        label_13 = new QLabel(groupBox_6);
+        label_13->setObjectName(QStringLiteral("label_13"));
+
+        formLayout_5->setWidget(2, QFormLayout::LabelRole, label_13);
+
+        autofocusCheckbox = new QCheckBox(groupBox_6);
+        autofocusCheckbox->setObjectName(QStringLiteral("autofocusCheckbox"));
+
+        formLayout_5->setWidget(2, QFormLayout::FieldRole, autofocusCheckbox);
+
+        label_14 = new QLabel(groupBox_6);
+        label_14->setObjectName(QStringLiteral("label_14"));
+
+        formLayout_5->setWidget(3, QFormLayout::LabelRole, label_14);
+
+        focusSlider = new QSlider(groupBox_6);
+        focusSlider->setObjectName(QStringLiteral("focusSlider"));
+        sizePolicy2.setHeightForWidth(focusSlider->sizePolicy().hasHeightForWidth());
+        focusSlider->setSizePolicy(sizePolicy2);
+        focusSlider->setMaximum(255);
+        focusSlider->setOrientation(Qt::Horizontal);
+
+        formLayout_5->setWidget(3, QFormLayout::FieldRole, focusSlider);
+
+
+        verticalLayout_15->addLayout(formLayout_5);
+
+
+        verticalLayout_14->addWidget(groupBox_6);
 
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
@@ -625,8 +703,21 @@ public:
         framesDetectedLabel = new QLabel(groupBox_3);
         framesDetectedLabel->setObjectName(QStringLiteral("framesDetectedLabel"));
         framesDetectedLabel->setGeometry(QRect(70, 180, 68, 21));
+        tempLabel = new QLabel(groupBox_3);
+        tempLabel->setObjectName(QStringLiteral("tempLabel"));
+        tempLabel->setGeometry(QRect(60, 230, 68, 21));
 
-        horizontalLayout_3->addWidget(groupBox_3);
+        verticalLayout_14->addWidget(groupBox_3);
+
+
+        horizontalLayout_3->addLayout(verticalLayout_14);
+
+        line_4 = new QFrame(centralWidget);
+        line_4->setObjectName(QStringLiteral("line_4"));
+        line_4->setFrameShape(QFrame::VLine);
+        line_4->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_3->addWidget(line_4);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -645,7 +736,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget_3->setCurrentIndex(0);
+        tabWidget_3->setCurrentIndex(1);
         stackedWidget->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
         tabWidget_2->setCurrentIndex(1);
@@ -697,6 +788,12 @@ public:
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("MainWindow", "Received", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Communication", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Markers", 0));
+        groupBox_6->setTitle(QApplication::translate("MainWindow", "Camera Settings", 0));
+        label_7->setText(QApplication::translate("MainWindow", "Brightness", 0));
+        label_12->setText(QApplication::translate("MainWindow", "Sharpness", 0));
+        label_13->setText(QApplication::translate("MainWindow", "Auto Focus", 0));
+        autofocusCheckbox->setText(QString());
+        label_14->setText(QApplication::translate("MainWindow", "Focus", 0));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "Run", 0));
         startRunButton->setText(QApplication::translate("MainWindow", "Start", 0));
         stopRunButton->setText(QApplication::translate("MainWindow", "End", 0));
@@ -704,6 +801,7 @@ public:
         runTimeLabel->setText(QApplication::translate("MainWindow", "<run time>", 0));
         label_5->setText(QApplication::translate("MainWindow", "Frames Detected:", 0));
         framesDetectedLabel->setText(QApplication::translate("MainWindow", "<frames>", 0));
+        tempLabel->setText(QApplication::translate("MainWindow", "temp", 0));
     } // retranslateUi
 
 };

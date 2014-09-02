@@ -61,11 +61,64 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _received_data_max_length = 1000;
     _sent_data_max_length = 1000;
+
+    //Camera Sliders
+    connect(ui->brightnessSlider, SIGNAL(valueChanged(int)), this, SLOT(updateBrightness(int)));
+    connect(ui->sharpnessSlider, SIGNAL(valueChanged(int)), this, SLOT(updateSharpness(int)));
+    connect(ui->autofocusCheckbox, SIGNAL(toggled(bool)), this, SLOT(updateAutoFocus(bool)));
+    connect(ui->focusSlider, SIGNAL(valueChanged(int)), this, SLOT(updateFocus(int)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::updateFocus(int focus) {
+    QString command;
+    command = command + QString("v4l2-ctl -d /dev/video");
+    command = command + QString::number(_camera_device);
+    command = command + QString(" -c focus_absolute=");
+    command = command + QString::number(focus);
+
+    system(command.toStdString().c_str());
+}
+
+void MainWindow::updateAutoFocus(bool auto_focus) {
+    QString command;
+    command = command + QString("v4l2-ctl -d /dev/video");
+    command = command + QString::number(_camera_device);
+    command = command + QString(" -c focus_auto=");
+    if(ui->autofocusCheckbox->isChecked())
+        command = command + QString("1");
+    else {
+        command = command + QString("0");
+        this->updateFocus(ui->focusSlider->value());
+    }
+
+    system(command.toStdString().c_str());
+    ui->tempLabel->setText(command);
+    QTextStream(stdout) << command;
+}
+
+void MainWindow::updateSharpness(int sharpness) {
+    QString command;
+    command = command + QString("v4l2-ctl -d /dev/video");
+    command = command + QString::number(_camera_device);
+    command = command + QString(" -c sharpness=");
+    command = command + QString::number(sharpness);
+
+    system(command.toStdString().c_str());
+}
+
+void MainWindow::updateBrightness(int brightness) {
+    QString command;
+    command = command + QString("v4l2-ctl -d /dev/video");
+    command = command + QString::number(_camera_device);
+    command = command + QString(" -c brightness=");
+    command = command + QString::number(brightness);
+
+    system(command.toStdString().c_str());
 }
 
 void MainWindow::updateVideo(){

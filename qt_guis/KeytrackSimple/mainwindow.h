@@ -14,7 +14,7 @@
 #include <QByteArray>
 #include <QFileDialog>
 #include <QDateTime>
-
+#include <stdlib.h>
 
 namespace Ui {
 class MainWindow;
@@ -50,6 +50,10 @@ public slots:
     void saveReceivedData();
     void startRun();
     void stopRun();
+    void updateBrightness(int brightness);
+    void updateSharpness(int sharpness);
+    void updateAutoFocus(bool auto_focus);
+    void updateFocus(int focus);
 private:
     KeytrackMarker arucoMarkerToKeytrackMarker(aruco::Marker marker);
     int _camera_device;

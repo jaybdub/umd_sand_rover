@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[23];
-    char stringdata[298];
+    QByteArrayData data[31];
+    char stringdata[397];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -51,7 +51,15 @@ QT_MOC_LITERAL(18, 233, 12),
 QT_MOC_LITERAL(19, 246, 17),
 QT_MOC_LITERAL(20, 264, 16),
 QT_MOC_LITERAL(21, 281, 8),
-QT_MOC_LITERAL(22, 290, 7)
+QT_MOC_LITERAL(22, 290, 7),
+QT_MOC_LITERAL(23, 298, 16),
+QT_MOC_LITERAL(24, 315, 10),
+QT_MOC_LITERAL(25, 326, 15),
+QT_MOC_LITERAL(26, 342, 9),
+QT_MOC_LITERAL(27, 352, 15),
+QT_MOC_LITERAL(28, 368, 10),
+QT_MOC_LITERAL(29, 379, 11),
+QT_MOC_LITERAL(30, 391, 5)
     },
     "MainWindow\0loadSettings\0\0saveSettings\0"
     "applySettings\0receiveData\0sendData\0"
@@ -60,7 +68,10 @@ QT_MOC_LITERAL(22, 290, 7)
     "disconnectSerialPort\0sendTextEditSerialData\0"
     "selectView\0name\0clearSentData\0"
     "saveSentData\0clearReceivedData\0"
-    "saveReceivedData\0startRun\0stopRun"
+    "saveReceivedData\0startRun\0stopRun\0"
+    "updateBrightness\0brightness\0updateSharpness\0"
+    "sharpness\0updateAutoFocus\0auto_focus\0"
+    "updateFocus\0focus"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,7 +81,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -78,25 +89,29 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  109,    2, 0x0a /* Public */,
-       3,    0,  110,    2, 0x0a /* Public */,
-       4,    0,  111,    2, 0x0a /* Public */,
-       5,    0,  112,    2, 0x0a /* Public */,
-       6,    1,  113,    2, 0x0a /* Public */,
-       8,    0,  116,    2, 0x0a /* Public */,
-       9,    0,  117,    2, 0x0a /* Public */,
-      10,    0,  118,    2, 0x0a /* Public */,
-      11,    0,  119,    2, 0x0a /* Public */,
-      12,    0,  120,    2, 0x0a /* Public */,
-      13,    0,  121,    2, 0x0a /* Public */,
-      14,    0,  122,    2, 0x0a /* Public */,
-      15,    1,  123,    2, 0x0a /* Public */,
-      17,    0,  126,    2, 0x0a /* Public */,
-      18,    0,  127,    2, 0x0a /* Public */,
-      19,    0,  128,    2, 0x0a /* Public */,
-      20,    0,  129,    2, 0x0a /* Public */,
-      21,    0,  130,    2, 0x0a /* Public */,
-      22,    0,  131,    2, 0x0a /* Public */,
+       1,    0,  129,    2, 0x0a /* Public */,
+       3,    0,  130,    2, 0x0a /* Public */,
+       4,    0,  131,    2, 0x0a /* Public */,
+       5,    0,  132,    2, 0x0a /* Public */,
+       6,    1,  133,    2, 0x0a /* Public */,
+       8,    0,  136,    2, 0x0a /* Public */,
+       9,    0,  137,    2, 0x0a /* Public */,
+      10,    0,  138,    2, 0x0a /* Public */,
+      11,    0,  139,    2, 0x0a /* Public */,
+      12,    0,  140,    2, 0x0a /* Public */,
+      13,    0,  141,    2, 0x0a /* Public */,
+      14,    0,  142,    2, 0x0a /* Public */,
+      15,    1,  143,    2, 0x0a /* Public */,
+      17,    0,  146,    2, 0x0a /* Public */,
+      18,    0,  147,    2, 0x0a /* Public */,
+      19,    0,  148,    2, 0x0a /* Public */,
+      20,    0,  149,    2, 0x0a /* Public */,
+      21,    0,  150,    2, 0x0a /* Public */,
+      22,    0,  151,    2, 0x0a /* Public */,
+      23,    1,  152,    2, 0x0a /* Public */,
+      25,    1,  155,    2, 0x0a /* Public */,
+      27,    1,  158,    2, 0x0a /* Public */,
+      29,    1,  161,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -118,6 +133,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   24,
+    QMetaType::Void, QMetaType::Int,   26,
+    QMetaType::Void, QMetaType::Bool,   28,
+    QMetaType::Void, QMetaType::Int,   30,
 
        0        // eod
 };
@@ -146,6 +165,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 16: _t->saveReceivedData(); break;
         case 17: _t->startRun(); break;
         case 18: _t->stopRun(); break;
+        case 19: _t->updateBrightness((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 20: _t->updateSharpness((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 21: _t->updateAutoFocus((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 22: _t->updateFocus((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -176,13 +199,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 23)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 19;
+        _id -= 23;
     }
     return _id;
 }
