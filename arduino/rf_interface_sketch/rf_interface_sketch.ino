@@ -3,12 +3,14 @@
 MarkerChannel mch(&Serial);
 RfChannel rf1(&Serial1, &mch);
 RfChannel rf2(&Serial2, &mch);
+RfChannel rf3(&Serial3, &mch);
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   Serial1.begin(9600);
   Serial2.begin(9600);
+  Serial3.begin(9600);
 }
 
 void loop() {
@@ -16,6 +18,7 @@ void loop() {
   mch.update();
   rf1.update();
   rf2.update();
+  rf3.update();
   /*if(rf1._Serial->available() ) {
     Serial.print(rf1._Serial->read()); 
   }*/

@@ -49,6 +49,14 @@ char RfChannel::read() {
   if(_Serial->available())
     return (char)_Serial->read();
 };
+void RfChannel::reset() {
+  this->message = "";
+  this->requested_marker_id_str = "";
+  this-> requested_marker_id = 0;
+  this->state = 1;
+};
+
+//If an ~ is ever received, reset the state
 void RfChannel::update() {
   switch(this->state) {
     case 1:
@@ -60,6 +68,10 @@ void RfChannel::update() {
         else if (c == '#') {
           this->state = 3; 
         }
+        
+        if(c == '~') {
+          this->reset();
+        }
       }
       break;
      case 2:
@@ -69,6 +81,9 @@ void RfChannel::update() {
            this->mch_ptr->_Serial->println(this->message);
            this->message = "";
            this->state = 1;
+         }
+         else if(c == '~') {
+           this->reset();
          }
          else
            this->message.concat(c);
@@ -82,6 +97,9 @@ void RfChannel::update() {
            requested_marker_id = requested_marker_id_str.toInt();
            requested_marker_id_str = "";
          }
+         else if(c == '~') {
+           this->reset();
+         }
          else
            this->requested_marker_id_str.concat(c);
        }
@@ -90,6 +108,12 @@ void RfChannel::update() {
        if(this->mch_ptr->marker_id==this->requested_marker_id) {
          _Serial->println(this->mch_ptr->marker_str);
          this->state = 1;
+       }
+       if(_Serial->available() > 0) {
+         char c = _Serial->read();
+         if (c == '~') {
+           this->reset();
+         }
        }
        break;
   }

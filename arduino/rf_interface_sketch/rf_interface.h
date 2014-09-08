@@ -26,6 +26,7 @@ class RfChannel {
     MarkerChannel* mch_ptr;
     RfChannel(HardwareSerial* serial, MarkerChannel* mch_ptr);
     void update();
+    void reset();
     char read();
 };
 #endif
