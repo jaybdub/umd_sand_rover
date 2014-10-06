@@ -18,16 +18,6 @@ enes100::RfClient<SoftwareSerial> rf(&sSerial);
 enes100::Marker marker;
 
 void setup() {
-  //Configure pin states for the RF module.
-  pinMode(7,OUTPUT);
-  pinMode(10,OUTPUT);
-  pinMode(11,OUTPUT);
-  pinMode(12,OUTPUT);
-  digitalWrite(7, HIGH);
-  digitalWrite(10, HIGH);
-  digitalWrite(11, HIGH);
-  digitalWrite(12, LOW);
-  
   //Initialize the software and hardware serial
   sSerial.begin(9600);
   Serial.begin(9600);
