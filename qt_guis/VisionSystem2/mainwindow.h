@@ -23,6 +23,10 @@ public slots:
     void applySettings();
     void fillDefaultSettings();
     void update();
+    void updateBrightness(int brightness);
+    void updateSharpness(int sharpness);
+    void updateAutoFocus(bool auto_focus);
+    void updateFocus(int focus);
 private:
 
     Ui::MainWindow *ui;
