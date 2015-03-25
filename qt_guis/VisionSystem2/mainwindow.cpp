@@ -284,18 +284,20 @@ void MainWindow::updateAutoFocus(bool auto_focus) {
     command = command + QString("v4l2-ctl -d /dev/video");
     command = command + QString::number(cameraDevice);
     command = command + QString(" -c focus_auto=");
-    if(ui->autofocusCheckbox->isChecked())
+    command = command + QString::number(auto_focus);
+    /*if(ui->autofocusCheckbox->isChecked())
         command = command + QString("1");
     else {
         command = command + QString("0");
         this->updateFocus(ui->cameraFocusSlider->value());
     }
-
+    */
     system(command.toStdString().c_str());
-    ui->tempLabel->setText(command);
-    QTextStream(stdout) << command;
+    //ui->tempLabel->setText(command);
+    //QTextStream(stdout) << command;
 }
 void MainWindow::updateFocus(int focus) {
+    updateAutoFocus(false);
     QString command;
     command = command + QString("v4l2-ctl -d /dev/video");
     command = command + QString::number(cameraDevice);
